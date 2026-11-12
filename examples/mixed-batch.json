@@ -1,0 +1,14 @@
+{
+  "max_receives": 3,
+  "records": [
+    {"messageId": "m1", "body": "{\"job_id\":\"report-a\",\"units\":8}"},
+    {"messageId": "duplicate", "body": "{\"job_id\":\"report-a\",\"units\":8}"},
+    {"messageId": "conflict", "body": "{\"job_id\":\"report-a\",\"units\":9}"},
+    {"messageId": "invalid", "body": "{\"job_id\":\"broken\",\"units\":0}"}
+  ],
+  "expected": {
+    "receipts": ["report-a"],
+    "dead_letter": ["conflict", "invalid"],
+    "attempt_counts": {"m1": 1, "duplicate": 1, "conflict": 3, "invalid": 3}
+  }
+}
