@@ -2,6 +2,8 @@
 
 Process standard SQS batches with partial failures, idempotent DynamoDB receipts, and a dead-letter queue. Run the same batch logic locally with SQLite.
 
+[Skills and verification](docs/ENGINEERING_NOTES.md)
+
 ## Business problem
 
 Retrying a whole batch because one message failed can repeat successful work. Discarding all repeats by job ID can also hide a producer bug when the ID is reused for different input.
